@@ -7,6 +7,8 @@
 var list=[];
 function Alpha(){
   list.push(document.getElementById("ALPHA-0").innerHTML);
+  document.getElementById("ALPHA-0").innerHTML = "";
+  document.getElementById("ALPHA-1").innerHTML += list[0];
 };
 </script>
 </head>
