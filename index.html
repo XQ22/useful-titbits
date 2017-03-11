@@ -3,22 +3,31 @@
 <head>
 <title>Useful Titbits: Some stuff I made.</title>
 <script>
-//Alpha
+// Alpha
 var list=[];
+var alphaList=[];
 function Alpha(){
-  list.push(document.getElementById("ALPHA-0").innerHTML);
+  list[list.length] = document.getElementById("ALPHA-0").innerHTML;
   document.getElementById("ALPHA-0").innerHTML = "";
-  document.getElementById("ALPHA-1").innerHTML += list[0];
+  document.getElementById("ALPHA-1").innerHTML = list[0].toString();
 };
+function Alphabetise(){
+  for(var i = 0;i<list.length;i++){
+    alphalist[i] = list[i].toString()[0];
+  }
+};
+// Dice
 </script>
 </head>
 <body>
 <h1>Useful Titbits</h1>
-<h2>Alphabetiser</h2>
+<p>A bunch of useful pieces of code, bundled into this conglomeration, as created by XQ22</p>
+<h2 id="Alpha">Alphabetiser</h2>
 <input id="ALPHA-0" />
 <button onClick="Alpha()" >Add to list</button><br>
 <div id="ALPHA-1"> </div> 
   
 <h2>Dice simulator</h2>
+
 </body>
 </html>
