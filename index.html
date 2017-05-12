@@ -3,6 +3,15 @@
 <head>
 <title>Useful Titbits: Some stuff I made.</title>
 <script>
+// Common Stuff
+function Search(s,t){
+  for(var i = 0;i<t.length;i++){
+    if(t.substring(i,i+s.length) === s){
+      return true;
+    }
+  }
+  return false;
+};
 // Alpha
 var list=[];
 var alphaList=[];
