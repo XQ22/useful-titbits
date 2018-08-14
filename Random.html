@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Random Number Generator</title>
+<style>
+body {
+  background-color: #252636;
+  color: #acaeb2;
+}
+  
+h1, h2 {
+  font-family: Arial, Helvetica Neue, monospace;
+}
+
+h1 {
+  font-size: 70px;
+}
+p {
+  font-family: Helvetica, Arial, monospace;
+}
+  
+table {
+  border: 0px;
+}
+
+button {
+  border: none;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+button:hover {
+  color: #ccced2;
+}
+ 
+</style>
+<script>
+function Random(a){
+	return Math.floor(Math.random() * a);
+};
+function Parse(){
+	var res = 0;
+	var x = document.getElementById("in").value;
+	var j = x.split("+");
+	for(var i = 0;i<j.length;i++){
+		var sub = j[i];
+		var d = sub.split("d");
+		for(var k = 0;k<Number(d[0]);k++){
+			res += Random(Number(d[1]))+1;
+		}
+	}
+	document.getElementById("out").innerHTML = x+" = "+res;
+};
+</script>
+</head>
+<body id="body" >
+<input id="in" /><button onclick="Parse()">Enter</button>
+<p id="out"></p>
+</body>
+</html>
