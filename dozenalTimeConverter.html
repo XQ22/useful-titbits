@@ -97,7 +97,8 @@ function timeConvert(){
 };
 
 function nowButton(){
-
+	let n = Date.now();
+	document.getElementById("decimal-time").value = Math.floor((n%86400000)/3600000) + ":" + Math.floor((n%3600000)/60000) + ":" + Math.floor((n%60000)/1000);
 };
 
 </script>
