@@ -1,0 +1,119 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Dozenal Time Converter</title>
+<link rel="shortcut icon" href="icon.ico"/>
+<style>
+body {
+	text-align: center;
+	background-color: #362625;
+	color: #10e335;	
+	font-family: Courier New, Courier, monospace;
+	font-size: 60px;
+	cursor: default;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+p {
+	
+}
+
+button {
+	vertical-align: -15px;
+	padding: 0px;
+	margin: 10px;
+	border-color: #dec9fe;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input {
+	text-align: center;
+	background-color: #263625;
+	border-color: #c9fede;
+	border-width: 2px;
+	border-radius: 5px;
+	color: #10e335;	
+	font-family: Courier New, Courier, monospace;
+	font-size: 60px;
+	width: 320px;
+	cursor: text;
+}
+
+</style>
+<script>
+
+var dek = "X";
+var el = "E";
+var format = 0;
+
+function dec2doz(dec){
+	let digit = 0;
+	let num = Number(dec);
+	let doz = "";
+	do {
+		digit = num % 12;
+		num = Math.floor(num/12);
+		doz = ["0","1","2","3","4","5","6","7","8","9",dek,el][digit] + doz;
+	}while(num >= 1);
+	let out = (doz === "undefined" ? undefined : doz) || "??";
+	return out;
+};
+function doz2dec(doz){
+	let num = doz.split("");
+	let dec = 0;
+	let digit = 0;
+	let LEN = num.length;
+	for(let i = 0;i<LEN;i++){
+		digit = num[i];
+		dec = dec + (digit === dek ? 10 : (digit === el ? 11 : Number(digit)))*(Math.pow(12,LEN-i-1));
+	}
+	let out = dec || "??";
+	return out;
+};
+
+function timeConvert(){
+	let decT = document.getElementById("decimal-time").value.split(":");
+	let dozT = document.getElementById("dozenal-time").value.split(":");
+	let out = "";
+	if(decT.length!==3){
+		if(dozT.length!==3){
+			window.alert("Please use HH:MM:SS format for the time you have, and a dash (-) for the time you want to convert to.");
+		} else {
+			for(let i = 0;i<3;i++){
+				out += doz2dec(dozT[i]) + (i < 2 ? ":" : "")
+			}
+			document.getElementById("decimal-time").value = out;
+		}
+	} else {
+		for(let i = 0;i<3;i++){
+			out += dec2doz(decT[i]) + (i < 2 ? ":" : "")
+		}
+		document.getElementById("dozenal-time").value = out;
+	}
+};
+
+function nowButton(){
+
+};
+
+</script>
+</head>
+<body>
+<div id="Header">
+	<h1>Dozenal Time Converter</h1>
+</div>
+<p><input id="decimal-time" value="HH:MM:SS" /><sub>DEC</sub><button onclick="timeConvert()"><svg width="60" height="60">
+<rect width="60" height="60" style="fill:black"/>
+<polygon points="10,15 40,15 40,7 55,20 40,33 40,25 10,25" style="fill:lime"/>
+<polygon points="50,45 20,45 20,53 5,40 20,27 20,35 50,35" style="fill:lime"/>
+</svg></button><input id="dozenal-time" value="HH:MM:SS" /><sub>DOZ</sub></p>
+<button onclick="nowButton()"><svg width="60" height="60">
+<rect width="60" height="60" style="fill:black"/>
+<text x="10" y="35" style="fill:lime;text-align:center;font-family:Courier New,Courier,monospace;font-size:20px;">NOW!</text>
+</svg></button>
+</body>
+</html>
