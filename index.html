@@ -2,41 +2,12 @@
 <html>
 <head>
 <title>Useful Titbits: Some stuff I made.</title>
-<script>
-// Common Stuff
-function Search(s,t){
-  for(var i = 0;i<t.length;i++){
-    if(t.substring(i,i+s.length) === s){
-      return true;
-    }
-  }
-  return false;
-};
-// Alpha
-var list=[];
-var alphaList=[];
-function Alpha(){
-  list[list.length] = document.getElementById("ALPHA-0").innerHTML;
-  document.getElementById("ALPHA-0").innerHTML = "";
-  document.getElementById("ALPHA-1").innerHTML = list[0].toString();
-};
-function Alphabetise(){
-  for(var i = 0;i<list.length;i++){
-    alphalist[i] = list[i].toString()[0];
-  }
-};
-// Dice
-</script>
 </head>
 <body>
 <h1>Useful Titbits</h1>
-<p>A bunch of useful pieces of code, bundled into this conglomeration, as created by XQ22</p>
-<h2 id="Alpha">Alphabetiser</h2>
-<input id="ALPHA-0" />
-<button onClick="Alpha()" >Add to list</button><br>
-<div id="ALPHA-1"> </div> 
-  
-<h2>Dice simulator</h2>
-
+  <ul>
+    <li><a href="Random.html">A dice-roller for RPGs</a></li>
+    <li><a href="dozenalTimeConverter.html">A converter from decimal time to dozenal time</a></li>
+  </ul>
 </body>
 </html>
