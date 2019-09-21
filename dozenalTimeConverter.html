@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Dozenal Time Converter</title>
-<link rel="shortcut icon" href="icon.ico"/>
+<link rel="shortcut icon" href="UTicon.ico"/>
 <style>
 body {
 	text-align: center;
@@ -99,6 +99,7 @@ function timeConvert(){
 function nowButton(){
 	let n = Date.now();
 	document.getElementById("decimal-time").value = Math.floor((n%86400000)/3600000) + ":" + Math.floor((n%3600000)/60000) + ":" + Math.floor((n%60000)/1000);
+	document.getElementById("dozenal-time").value = "-";
 	timeConvert();
 };
 
