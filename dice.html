@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Dice!</title>
+<link rel="shortcut icon" href="icon.ico"/>
+<style>
+body {
+	text-align: center;
+	background-color: #362625;
+	color: #10e335;	
+	font-family: Courier New, Courier, monospace;
+	font-size: 50px;
+	cursor: default;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+#Footer {
+	font-size: 30px;
+}
+
+button {
+	vertical-align: -15px;
+	padding: 0px;
+	margin: 10px;
+	border-color: #dec9fe;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input {
+	text-align: center;
+	background-color: #263625;
+	border-color: #c9fede;
+	border-width: 2px;
+	border-radius: 5px;
+	color: #10e335;	
+	font-family: Courier New, Courier, monospace;
+	font-size: 60px;
+	width: 320px;
+	cursor: text;
+}
+
+</style>
+<script>
+
+function Roll(){
+	let combo = document.getElementById("combo").value;
+	let pieces = combo.split("+");
+	let result = 0;
+	let log = "";
+	for(let i = 0;i<pieces.length;i++){
+		
+		let dice = pieces[i].split("d");
+		if(dice.length === 2){
+			log += "("
+			for(let j=0;j<dice[0];j++){
+				let cRoll = Math.ceil(Math.random()*dice[1]);
+				result += cRoll;
+				log += cRoll + (j < dice[0] - 1 ? "+" : "");
+			}
+			log += ")";
+		} else {
+			let cMod = Number(dice[0]);
+			result += cMod;
+			log += cMod;
+		}
+		
+		log += i < pieces.length - 1 ? "+" : "";
+	}
+	document.getElementById("result").innerHTML = combo + " → " + log + " → " + result;
+};
+
+</script>
+</head>
+<body>
+<div id="Header">
+	<h1>Dice</h1>
+</div>
+<div id="Body"><p>
+	Dice:<input id="combo" value="1d20"/>
+	<button onclick="Roll()"><svg width="60" height="60">
+	<rect width="60" height="60" style="fill:black"/>
+	<text x="5" y="35" style="fill:lime;text-align:center;font-family:Courier New,Courier,monospace;font-size:18px;">ROLL!</text>
+	</svg></button><br>
+	Result: <span id="result"></span>
+</p></div>
+<div id="Footer">
+	<p>This was made by XQ22</p>
+</div>
+</body>
+</html>
